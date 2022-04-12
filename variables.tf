@@ -61,3 +61,11 @@ variable "ssh_authorized_keys" {
 variable "zerotier_subnet" {
   type = string
 }
+
+variable "bastion_user" {
+  type = string
+}
+
+variable "bastion_host" {
+  type = string
+}
