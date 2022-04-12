@@ -48,10 +48,6 @@ variable "ssh_authorized_keys" {
   type = string
 }
 
-variable "zerotier_network_id" {
-  type = string
-}
-
-variable "zerotier_ip_assignment" {
+variable "zerotier_subnet" {
   type = string
 }
