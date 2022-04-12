@@ -1,4 +1,4 @@
-module "kubernetes_node_0" {
+module "masters" {
   count  = 3
   source = "/Users/jakoberpf/Code/jakoberpf/terraform/modules/proxmox/kubernetes-instance"
   providers = {
@@ -7,8 +7,8 @@ module "kubernetes_node_0" {
     zerotier = zerotier
   }
 
-  id                     = join("", [var.id_prefix, 0, count.index])
-  name                   = var.name
+  id                     = join("", [var.id, 0, count.index])
+  name                   = "${var.name}-master-${count.index}"
   node                   = var.node
   instance_template      = var.instance_template
   instance_cpus          = var.instance_cpus

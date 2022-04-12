@@ -1,19 +1,19 @@
 locals {
   kubespray_inventory = templatefile("${path.module}/templates/inventory.tpl", {
     masters-id = [
-      module.kubernetes_node_0[0].name,
-      module.kubernetes_node_0[1].name,
-      module.kubernetes_node_0[2].name
+      module.masters[0].name,
+      module.masters[1].name,
+      module.masters[2].name
     ]
     masters-ip = [
-      module.kubernetes_node_0[0].ip,
-      module.kubernetes_node_0[1].ip,
-      module.kubernetes_node_0[2].ip
+      module.masters[0].ip,
+      module.masters[1].ip,
+      module.masters[2].ip
     ]
     masters-ip-zerotier = [
-      module.kubernetes_node_0[0].ip_zerotier,
-      module.kubernetes_node_0[1].ip_zerotier,
-      module.kubernetes_node_0[2].ip_zerotier
+      module.masters[0].ip_zerotier,
+      module.masters[1].ip_zerotier,
+      module.masters[2].ip_zerotier
     ]
     masters-user = "kubespray"
     workers-ip = [

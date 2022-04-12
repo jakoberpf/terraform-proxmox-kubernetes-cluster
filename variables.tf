@@ -1,4 +1,4 @@
-variable "id_prefix" {
+variable "id" {
   type    = number
   default = 100
 }
