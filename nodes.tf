@@ -30,8 +30,8 @@ module "workers" {
     zerotier = zerotier
   }
 
-  id                     = join("", [var.id, 0, count.index])
-  name                   = "${var.name}-master-${count.index}"
+  id                     = join("", [var.id, 1, count.index])
+  name                   = "${var.name}-worker-${count.index}"
   node                   = var.node
   instance_template      = var.instance_template
   instance_cpus          = var.instance_cpus
@@ -41,5 +41,5 @@ module "workers" {
   network_gateway        = var.network_gateway
   ssh_authorized_keys    = var.ssh_authorized_keys
   zerotier_network_id    = module.zerotier_cluster_network.network_ids[0]
-  zerotier_ip_assignment = join("", ["10.110.180.11", count.index])
+  zerotier_ip_assignment = join("", ["10.110.180.12", count.index])
 }
