@@ -1,6 +1,6 @@
 [all]
 %{ for index, id in masters-id ~}
-${id} ansible_host=${masters-ip-zt-internal[index]} ansible_user=${masters-user} etcd_member_name=etcd-${index} ip=${masters-ip-zt-internal[index]}
+${id} ansible_host=${masters-ip[index]} ansible_user=${masters-user} etcd_member_name=etcd-${index} ip=${masters-ip[index]}
 %{ endfor ~}
 %{ for index, id in workers-id ~}
 ${id} ansible_host=${workers-ip[index]} ansible_user=${workers-user}

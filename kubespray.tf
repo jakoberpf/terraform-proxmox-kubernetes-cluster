@@ -1,16 +1,11 @@
 locals {
   kubespray_inventory = templatefile("${path.module}/templates/inventory.tpl", {
-    masters-ip-public = [
+    masters-ip = [
       "master-0",
       "master-1",
       "master-2"
     ]
-    masters-ip-zt-internal = [
-      "master-0",
-      "master-1",
-      "master-2"
-    ]
-    masters-ip-zt-external = [
+    masters-ip-zerotier = [
       "master-0",
       "master-1",
       "master-2"
