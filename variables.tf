@@ -11,6 +11,16 @@ variable "node" {
   type = string
 }
 
+variable "count_masters" {
+  type    = number
+  default = 3
+}
+
+variable "count_workers" {
+  type    = number
+  default = 0
+}
+
 variable "instance_template" {
   type    = string
   default = "ubuntu-focal-server-cloudinit"

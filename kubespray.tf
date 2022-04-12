@@ -1,34 +1,14 @@
 locals {
   kubespray_inventory = templatefile("${path.module}/templates/inventory.tpl", {
-    masters-id = [
-      module.masters[0].name,
-      module.masters[1].name,
-      module.masters[2].name
-    ]
-    masters-ip = [
-      module.masters[0].ip,
-      module.masters[1].ip,
-      module.masters[2].ip
-    ]
-    masters-ip-zerotier = [
-      module.masters[0].ip_zerotier,
-      module.masters[1].ip_zerotier,
-      module.masters[2].ip_zerotier
-    ]
-    masters-user = "kubespray"
-    workers-ip = [
-      "worker-0",
-      "worker-1",
-      "worker-2"
-    ]
-    workers-id = [
-      "worker-0",
-      "worker-1",
-      "worker-2"
-    ]
-    workers-user = "kubespray"
-    bastion-ip   = "bastion"
-    bastion-id   = "bastion"
-    bastion-user = "root"
+    masters-user        = "kubespray"
+    masters-id          = [for master in module.masters : "${master.name}"]
+    masters-ip          = [for master in module.masters : "${master.ip}"]
+    masters-ip-zerotier = [for master in module.masters : "${master.ip_zerotier}"]
+    workers-user        = "kubespray"
+    workers-id          = var.count_workers != 0 ? [for worker in module.workers : "${worker.name}"] : []
+    workers-ip          = var.count_workers != 0 ? [for worker in module.workers : "${worker.ip}"] : []
+    bastion-user        = "root"
+    bastion-ip          = "bastion"
+    bastion-id          = "bastion"
   })
 }
