@@ -9,6 +9,7 @@ terraform {
       version = "2.9.4"
     }
     remote = {
+      configuration_aliases = [ remote.gateway ]
       source  = "tenstad/remote"
       version = "0.0.23"
     }
@@ -17,8 +18,4 @@ terraform {
       version = "1.2.0"
     }
   }
-}
-
-provider "remote" {
-  alias = "gateway"
 }
