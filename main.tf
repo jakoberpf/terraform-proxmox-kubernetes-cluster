@@ -1,5 +1,9 @@
 terraform {
   required_providers {
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "3.8.0"
+    }
     proxmox = {
       source  = "telmate/proxmox"
       version = "2.9.4"
@@ -13,4 +17,8 @@ terraform {
       version = "1.2.0"
     }
   }
+}
+
+provider "remote" {
+  alias = "gateway"
 }

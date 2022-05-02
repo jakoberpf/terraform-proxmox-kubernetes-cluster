@@ -69,3 +69,18 @@ variable "bastion_user" {
 variable "bastion_host" {
   type = string
 }
+
+variable "cloudflare_email" {
+  type        = string
+  description = ""
+}
+
+variable "cloudflare_zone_id" {
+  type        = string
+  description = ""
+}
+
+variable "cloudflare_token" {
+  type        = string
+  description = ""
+}
