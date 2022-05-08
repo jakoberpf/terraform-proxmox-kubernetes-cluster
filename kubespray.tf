@@ -5,7 +5,7 @@ locals {
     masters-ip   = [for master in module.masters : split("/", master.ip)[0]]
     workers-user = "kubespray"
     workers-id   = var.count_workers != 0 ? [for worker in module.workers : "${worker.name}"] : []
-    workers-ip   = var.count_workers != 0 ? [for worker in module.workers : "${worker.ip}"] : []
+    workers-ip   = var.count_workers != 0 ? [for worker in module.workers : split("/", worker.ip)[0] ] : []
     bastion-user = var.bastion_user
     bastion-id   = "bastion"
     bastion-ip   = var.bastion_host
