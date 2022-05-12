@@ -51,7 +51,7 @@ variable "count_workers" {
   type    = number
   validation {
     condition = (
-      var.count_masters >= 0 && var.count_masters <= 9
+      var.count_workers >= 0 && var.count_workers <= 9
     )
     error_message = "Must be between 0 and 9, inclusive."
   }
