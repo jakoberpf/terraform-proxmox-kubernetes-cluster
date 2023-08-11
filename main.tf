@@ -11,7 +11,7 @@ terraform {
     remote = {
       configuration_aliases = [ remote.gateway ]
       source  = "tenstad/remote"
-      version = "0.0.23"
+      version = "0.1.2"
     }
     zerotier = {
       source  = "zerotier/zerotier"
