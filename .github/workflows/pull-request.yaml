@@ -1,0 +1,49 @@
+name: 'test'
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  # lint:
+  #   name: 'linting terrafrom'
+  # Linting ...
+
+  validate:
+    name: 'validate terraform'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+
+      - name: 'Setup terraform'
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: '1.1.8'
+
+      - name: 'Terragrunt init'
+        run: terraform init
+
+      - name: 'Terragrunt validate'
+        run: terraform validate
+
+  docs:
+    name: 'generate documentation'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Render terraform docs inside the README.md and push changes back to PR branch
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
+
+# Reusable Workflow https://github.blog/2022-02-10-using-reusable-workflows-github-actions/ 
+# Kubernetes https://dev.to/kitarp29/running-kubernetes-on-github-actions-f2c
+# Security https://medium.com/@nanditasahu031/how-to-use-different-tools-to-do-terraform-checks-in-github-actions-b16e9fa73c42
