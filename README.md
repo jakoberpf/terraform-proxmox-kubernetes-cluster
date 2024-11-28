@@ -48,7 +48,7 @@ module "kubernetes_node" {
 | <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | 4.14.0 |
 | <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 2.9.4 |
 | <a name="requirement_remote"></a> [remote](#requirement\_remote) | 0.0.23 |
-| <a name="requirement_zerotier"></a> [zerotier](#requirement\_zerotier) | 1.2.0 |
+| <a name="requirement_zerotier"></a> [zerotier](#requirement\_zerotier) | 1.5.0 |
 
 ## Providers
 
